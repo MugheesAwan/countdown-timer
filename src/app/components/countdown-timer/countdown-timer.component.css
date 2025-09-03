@@ -1,0 +1,159 @@
+.countdown-container {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.state-container {
+  text-align: center;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+/* Loading State */
+.loading-state {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top: 4px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1rem;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loading-text {
+  font-size: 1.1rem;
+  margin: 0;
+  opacity: 0.9;
+}
+
+/* Error State */
+.error-state {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+  color: white;
+}
+
+.error-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.error-text {
+  font-size: 1.1rem;
+  margin: 0 0 1.5rem;
+  opacity: 0.9;
+}
+
+/* Countdown State */
+.countdown-state {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  color: white;
+}
+
+.countdown-display {
+  padding: 1rem;
+}
+
+.countdown-title {
+  font-size: 2rem;
+  margin: 0 0 2rem;
+  font-weight: 600;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.seconds-display {
+  margin-bottom: 2rem;
+}
+
+.seconds-label {
+  display: block;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  opacity: 0.9;
+}
+
+.seconds-value {
+  display: block;
+  font-size: 4rem;
+  font-weight: 700;
+  font-family: 'Courier New', monospace;
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+}
+
+.seconds-value.urgent {
+  color: #ffd700;
+  animation: pulse 1s ease-in-out infinite alternate;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
+  }
+}
+
+.deadline-reached {
+  margin-top: 2rem;
+  padding: 1rem;
+  /* background: rgba(255, 255, 255, 0.1); */
+  border-radius: 8px;
+}
+
+.deadline-text {
+  font-size: 1.3rem;
+  margin: 0;
+  font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .countdown-container {
+    margin: 1rem;
+    padding: 1rem;
+  }
+
+  .state-container {
+    padding: 1.5rem;
+  }
+
+  .countdown-title {
+    font-size: 1.5rem;
+  }
+
+  .seconds-value {
+    font-size: 3rem;
+  }
+
+  .seconds-label {
+    font-size: 1rem;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .spinner,
+  .seconds-value.urgent {
+    animation: none;
+  }
+}

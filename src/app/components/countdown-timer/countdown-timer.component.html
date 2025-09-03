@@ -1,0 +1,31 @@
+<div class="countdown-container">
+  <!-- Loading State -->
+  <div *ngIf="loading()" class="state-container loading-state">
+    <div class="spinner"></div>
+    <p class="loading-text">Loading deadline information...</p>
+  </div>
+
+  <!-- Error State -->
+  <div *ngIf="error() && !loading()" class="state-container error-state">
+    <div class="error-icon">⚠️</div>
+    <p class="error-text">{{ error() }}</p>
+  </div>
+
+  <!-- Countdown State -->
+  <div *ngIf="!loading() && !error()" class="state-container countdown-state">
+    <div class="countdown-display">
+      <h2 class="countdown-title">Countdown Timer</h2>
+      <div class="seconds-display">
+        <span class="seconds-label">Seconds left to deadline:</span>
+        <span class="seconds-value" [class.urgent]="secondsLeft()! <= 10">
+          {{ secondsLeft() }}
+        </span>
+      </div>
+
+      <!-- Deadline reached message -->
+      <div *ngIf="secondsLeft() === 0" class="deadline-reached">
+        <p class="deadline-text">⏰ Deadline has been reached!</p>
+      </div>
+    </div>
+  </div>
+</div>
